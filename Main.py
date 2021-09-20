@@ -1,3 +1,6 @@
+# Case-study #1
+# Developers:   Aksenov A. (%),
+#               Labuzov A. (60%)
 import random
 
 with open('azs.txt') as azs:
