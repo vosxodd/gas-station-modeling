@@ -4,12 +4,13 @@
 import random
 
 with open('azs.txt') as azs:
-    with open('input.txt') as f:
+    with open('input.txt') as f:      # "encoding='UTF-8'" can be put if necessary
         list_azs = azs.readlines()
         prices = {'АИ-80': 45, 'АИ-92': 44, 'АИ-95': 50, 'АИ-98': 52}
         petrol = {'АИ-80': 0, 'АИ-92': 0, 'АИ-95': 0, 'АИ-98': 0}  # sold by one day per type of petrol
         cash = 0  # money our gas-station will get in the end
         unhappy_cars = 0  # for cars who will not be served
+        
         '''Getting information about our gas station'''
         for i in range(len(list_azs)):
             list_azs[i] = list_azs[i].split()
@@ -84,7 +85,6 @@ with open('azs.txt') as azs:
 
         time_orders = []
         for minute in range(1, (24*60) + 1):
-
             for l in time_orders:
                 for k in time_orders:
                     if k[1] == minute:
@@ -116,10 +116,13 @@ with open('azs.txt') as azs:
                         extra = [time_in_minutes, time_in_minutes + time_to_replenish, type_petrol, litres, time_to_replenish, num_of_gas]
                         time_orders.append(extra)
                     condition()
-        def final_answer(petrol,prices,unhappy_cars):
-            print("Количество литров, проданное за сутки по каждой марке бензина:",petrol)
-            b={k : v * petrol[k] for k, v in prices.items() if k in petrol}
-            print("Продажи по каждой марке бензина:",b)
-            print("Суммарная прибыль:",sum(b.values()))
-            print("Количество машин, покивнуших АЗС без заправки:",unhappy_cars)
-        final_answer(petrol,prices,unhappy_cars)
+                    
+        def final_answer(petrol, prices, unhappy_cars):
+            """This function prints final answer"""
+            print("Количество литров, проданное за сутки по каждой марке бензина:", petrol)
+            b = {k : v * petrol[k] for k, v in prices.items() if k in petrol}
+            print("Продажи по каждой марке бензина:", b)
+            print("Суммарная прибыль:", sum(b.values()))
+            print("Количество машин, покивнуших АЗС без заправки:", unhappy_cars)
+            
+        final_answer(petrol, prices, unhappy_cars)
