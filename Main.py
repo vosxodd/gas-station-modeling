@@ -79,22 +79,8 @@ with open('azs.txt') as azs:
             petrol[type_petrol] += i[1]
 
 
-        def bubble_sort(nums):
-            # Устанавливаем swapped в True, чтобы цикл запустился хотя бы один раз
-            swapped = True
-            while swapped:
-                swapped = False
-                for i in range(len(nums) - 1):
-                    if nums[i] > nums[i + 1]:
-                        # Меняем элементы
-                        nums[i], nums[i + 1] = nums[i + 1], nums[i]
-                        # Устанавливаем swapped в True для следующей итерации
-                        swapped = True
-
-
         time_orders = []
         for minute in range(1, (24*60) + 1):
-
             for l in time_orders:
                 for k in time_orders:
                     if k[1] == minute:
