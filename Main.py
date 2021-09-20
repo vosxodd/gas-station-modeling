@@ -1,5 +1,5 @@
 # Case-study #1
-# Developers:   Aksenov A. (%),
+# Developers:   Aksenov A. (55%),
 #               Labuzov A. (60%)
 import random
 
@@ -84,6 +84,7 @@ with open('azs.txt') as azs:
 
         time_orders = []
         for minute in range(1, (24*60) + 1):
+
             for l in time_orders:
                 for k in time_orders:
                     if k[1] == minute:
@@ -115,4 +116,10 @@ with open('azs.txt') as azs:
                         extra = [time_in_minutes, time_in_minutes + time_to_replenish, type_petrol, litres, time_to_replenish, num_of_gas]
                         time_orders.append(extra)
                     condition()
-
+        def final_answer(petrol,prices,unhappy_cars):
+            print("Количество литров, проданное за сутки по каждой марке бензина:",petrol)
+            b={k : v * petrol[k] for k, v in prices.items() if k in petrol}
+            print("Продажи по каждой марке бензина:",b)
+            print("Суммарная прибыль:",sum(b.values()))
+            print("Количество машин, покивнуших АЗС без заправки:",unhappy_cars)
+        final_answer(petrol,prices,unhappy_cars)
